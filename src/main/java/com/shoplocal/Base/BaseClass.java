@@ -17,45 +17,36 @@ import java.util.Properties;
 import static java.time.temporal.ChronoUnit.SECONDS;
 
 public class BaseClass {
+
+    public static Properties prop;
     public static WebDriver driver;
- public static Properties prop;
 
-    public     WebDriverWait shortwait;
-    public  WebDriverWait mediumwait;
-    public  WebDriverWait longwait;
-    public BaseClass(WebDriver driver) {
-        this.driver = driver;
-        shortwait = new WebDriverWait(driver, Duration.of(40, SECONDS));
-        mediumwait = new WebDriverWait(driver, Duration.of(30, SECONDS));
-        longwait = new WebDriverWait(driver, Duration.of(60, SECONDS));
-    }
-
- @BeforeTest
-   public void loadConfig(){
-        try{
-            prop=new Properties();
+    @BeforeTest
+    public void loadConfig() {
+        try {
+            prop = new Properties();
             System.out.println("super constructor invoked");
-            FileInputStream fis=new FileInputStream(System.getProperty("user.dir")+"\\configuration\\Dev_Config.properties");
+            FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "\\configuration\\Dev_Config.properties");
             prop.load(fis);
-        }catch(FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
-           e.printStackTrace();
+            e.printStackTrace();
         }
-   }
-
-public static void launchApp(){
-    WebDriverManager.chromedriver().setup();
-    String browserName = prop.getProperty("browser");
-
-    if(browserName.contains("Chrome")){
-        driver = new ChromeDriver();
-    } else if (browserName.contains("FireFox")) {
-        driver = new FirefoxDriver();
-    } else if (browserName.contains("Edge")) {
-        driver = new EdgeDriver();
     }
-    driver.get(prop.getProperty("baseUrl"));
-}
+
+    public static void launchApp() {
+        WebDriverManager.chromedriver().setup();
+        String browserName = prop.getProperty("browser");
+
+        if (browserName.contains("Chrome")) {
+            driver = new ChromeDriver();
+        } else if (browserName.contains("FireFox")) {
+            driver = new FirefoxDriver();
+        } else if (browserName.contains("Edge")) {
+            driver = new EdgeDriver();
+        }
+        driver.get(prop.getProperty("baseUrl"));
+    }
 
 }
