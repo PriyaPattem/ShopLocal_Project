@@ -25,7 +25,7 @@ public class Action extends BaseClass {
     }
 
     //To perform mouse click action
-    public void Mouseclick(WebDriver driver, WebElement ele) {
+    public void click(WebDriver driver, WebElement ele) {
 
         Actions act = new Actions(driver);
         act.moveToElement(ele).click().build().perform();
