@@ -646,5 +646,26 @@ public class Action extends BaseClass {
         String currentDate = new SimpleDateFormat("yyyy-MM-dd-hhmmss").format(new Date());
         return currentDate;
     }
+    public boolean slider(WebDriver driver,WebElement ele, int x, int y) {
+        boolean flag = false;
+        try {
+            // new Actions(driver).dragAndDropBy(dragitem, 400, 1).build()
+            // .perform();
+            new Actions(driver).dragAndDropBy(ele, x, y).build().perform();// 150,0
+            Thread.sleep(5000);
+            flag = true;
+            return true;
+        } catch (Exception e) {
+
+            return false;
+        } finally {
+            if (flag) {
+                System.out.println("Slider Action is performed");
+            } else {
+                System.out.println("Slider Action is not performed");
+            }
+        }
+    }
+
 
 }
