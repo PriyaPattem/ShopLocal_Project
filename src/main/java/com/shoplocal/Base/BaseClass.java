@@ -1,5 +1,6 @@
 package com.shoplocal.Base;
 
+import com.shoplocal.actiondriver.Action;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,9 +15,9 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
 
-import static java.time.temporal.ChronoUnit.SECONDS;
-
 public class BaseClass {
+
+    static Action action = new Action();
 
     public static Properties prop;
     public static WebDriver driver;
@@ -47,6 +48,10 @@ public class BaseClass {
             driver = new EdgeDriver();
         }
         driver.get(prop.getProperty("baseUrl"));
+
+        action.implicitWait(driver,20);
+        action.pageLoadTimeOut(driver,20);
+        action.launchUrl(driver,prop.getProperty("baseUrl"));
     }
 
 }
