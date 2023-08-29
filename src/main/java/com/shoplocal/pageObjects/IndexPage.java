@@ -8,7 +8,6 @@ import com.shoplocal.actiondriver.Action;
 
 public class IndexPage extends BaseClass {
 
-    Action action=new Action();
 
     @FindBy(xpath = "//a[normalize-space(text())='Login']")
     WebElement LoginButton;
@@ -22,9 +21,9 @@ public class IndexPage extends BaseClass {
     public IndexPage(){
         PageFactory.initElements(driver,this);
     }
-    public LoginPage clickOnlogin(){
+    public LoginTypePage clickOnlogin(){
       action.click(driver,LoginButton);
-      return new LoginPage();
+      return new LoginTypePage();
     }
 
     public boolean ValidateLogo(){

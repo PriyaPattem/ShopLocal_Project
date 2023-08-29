@@ -17,7 +17,7 @@ import java.util.Properties;
 
 public class BaseClass {
 
-    static Action action = new Action();
+    public static Action action = new Action();
 
     public static Properties prop;
     public static WebDriver driver;

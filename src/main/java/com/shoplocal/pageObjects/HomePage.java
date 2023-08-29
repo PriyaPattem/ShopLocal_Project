@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends BaseClass {
-    Action action=new Action();
+
 
     @FindBy(xpath="//ul[@class=\"nav nav-pills d-flex justify-content-center\"]//a[@href=\"#today_deals\"]")
     WebElement TodaysDeals;
