@@ -1,13 +1,13 @@
 package com.shoplocal.pageObjects;
 
 import com.shoplocal.Base.BaseClass;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AddToCartPage extends BaseClass {
-
-
+    
     @FindBy(xpath="//select[@name=\"sizes\"]")
     WebElement size;
 
@@ -17,8 +17,13 @@ public class AddToCartPage extends BaseClass {
     @FindBy(xpath="//div[@class=\"modal-content model_border \"]")
     WebElement DeliveryTypeWindow;
 
-    @FindBy(xpath="//p[@class=\"delivery_name\" and text()=\"Shipment\"]")
-    WebElement shipmentType;
+    public WebElement shipmentType(String type){
+        String xpath= String.format("//div[@class=\"notSelected\"]//following-sibling::p[text()=%s]",type);
+        return driver.findElement(By.xpath(xpath));
+    }
+    String shiptype="Shipment";
+//    @FindBy(xpath="//p[@class=\"delivery_name\" and text()=\"Shipment\"]")
+//    WebElement shipmentType;
 
     @FindBy(id="submit")
     WebElement submitBtn;
@@ -40,7 +45,7 @@ public class AddToCartPage extends BaseClass {
     }
 
     public void selectShipmentType(){
-        action.click(driver,shipmentType);
+        action.click(driver,shipmentType(shiptype));
     }
 
     public void clickOnSubmitBtn(){
