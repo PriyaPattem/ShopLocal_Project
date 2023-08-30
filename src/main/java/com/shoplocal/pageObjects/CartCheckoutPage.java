@@ -37,10 +37,8 @@ public class CartCheckoutPage extends BaseClass {
         }
     }
 
-    public void productConfirmatiom(){
-        if(searchresult.ProductName.equals(productNameInCart)){
-
-        }
+    public boolean productAvailabiility(){
+        return action.isDisplayed(driver,productDetailsInCart(productNameInCart));
     }
 
 
