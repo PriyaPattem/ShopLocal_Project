@@ -16,7 +16,7 @@ public class CartCheckoutPage extends BaseClass {
        return driver.findElement(By.xpath(xpath));
    }
 
-    //  xpath=//tbody[@id="orderData"]/.//a[normalize-space("Women Regular Fit Solid Casual Shirt")]
+    // xpath=//tbody[@id="orderData"]/.//a[normalize-space("Women Regular Fit Solid Casual Shirt")]
 
     @FindBy(xpath="//p[@class=\"noItem\"]")
     WebElement noItemsMessage;
@@ -27,19 +27,62 @@ public class CartCheckoutPage extends BaseClass {
     @FindBy(xpath="//li[@onclick=\"changeDeliveryStatus(`shipment`)\"]")
     WebElement shipmentTypeTab;
 
+    @FindBy(xpath = "//span[normalize-space(text()=\"Next\") and @onclick=\"checkItemStatus(`shipment`,`36`,`726`)\"]")
+    WebElement nextButton;
+
+    @FindBy(xpath="//div[@class=\"delivery_address\"]")
+    WebElement deliveryAddress;
+
+    @FindBy(id="firstname")
+    WebElement name;
+
+    @FindBy(id="emailId")
+    WebElement emailId;
+
+    @FindBy(id="phone")
+    WebElement phone;
+
+    @FindBy(id="address1")
+    WebElement address;
+
+    @FindBy(id="city")
+    WebElement city;
+
+    @FindBy(id="state")
+    WebElement state;
+
+    @FindBy(id="country")
+    WebElement country;
+
+    @FindBy(id="zip")
+    WebElement zip;
+
+    @FindBy(xpath="//span[@onclick=\"checkAddress();\"]")
+    WebElement confirmAndPayBtn;
+
+
     public CartCheckoutPage(){
         PageFactory.initElements(driver,this);
     }
     public void clickOnShipmentTypeTab(){
-
         if(noItemsMessage.isDisplayed() && pickUpActive.isDisplayed()){
             action.click(driver,shipmentTypeTab);
         }
     }
 
-    public boolean productAvailabiility(){
+    public boolean productAvailabiilityInCart(){
         return action.isDisplayed(driver,productDetailsInCart(productNameInCart));
     }
+
+    public void clickOnNextButton(){
+        action.click(driver,nextButton);
+    }
+
+    public boolean visibilityOfDeliveryAddress(){
+        return action.isDisplayed(driver,deliveryAddress);
+    }
+
+
 
 
 

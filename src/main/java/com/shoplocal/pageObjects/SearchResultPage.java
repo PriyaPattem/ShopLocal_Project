@@ -15,8 +15,8 @@ public class SearchResultPage extends BaseClass {
         String xpath= String.format("//h4[@class=\"caption-title text-left text-truncate\"]//a[contains(normalize-space(),'%s')]",productname);
         return driver.findElement(By.xpath(xpath));
     }
-//    @FindBy(xpath="//h4[@class=\"caption-title text-left text-truncate\"]//a[contains(normalize-space(),'Women Regular Fit Solid Casual Shirt')]")
-//    WebElement productResult;
+    // @FindBy(xpath="//h4[@class=\"caption-title text-left text-truncate\"]//a[contains(normalize-space(),'Women Regular Fit Solid Casual Shirt')]")
+    // WebElement productResult;
 
     public SearchResultPage(){
         PageFactory.initElements(driver,this);

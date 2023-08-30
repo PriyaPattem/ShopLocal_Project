@@ -17,14 +17,12 @@ public class AddToCartPage extends BaseClass {
     @FindBy(xpath="//div[@class=\"modal-content model_border \"]")
     WebElement DeliveryTypeWindow;
 
-    public WebElement shipmentType(String type){
-        String xpath= String.format("//div[@class=\"notSelected\"]//following-sibling::p[text()=%s]",type);
+    public WebElement getDeliveryTypeWindow(String type){    // dynamic xpath to select the delivery type
+        String xpath= String.format("//div[@id='%s']",type);
         return driver.findElement(By.xpath(xpath));
     }
-    String shiptype1="PickUp";
-    String shiptype2="Shipment";
-//    @FindBy(xpath="//p[@class=\"delivery_name\" and text()=\"Shipment\"]")
-//    WebElement shipmentType;
+    String PickUp="Dummy";
+    String Shipment="Dummy1";
 
     @FindBy(id="submit")
     WebElement submitBtn;
@@ -35,13 +33,29 @@ public class AddToCartPage extends BaseClass {
     @FindBy(xpath="//div[@class=\"icon_names\" and text()=\"Cart\"]")
     WebElement cartIcon;
 
+    @FindBy(xpath="//input[@class=\"form-control qty quantity-field cart_quantity\"]")
+    WebElement quantity;
+
+    @FindBy(xpath="//span[@onclick=\"increase_val();\"]")
+    WebElement QuantityIncreaseButton;
+
     public AddToCartPage(){
         PageFactory.initElements(driver,this);
     }
 
     public void selectSize(String sizeOfProduct){
-        action.click(driver,size);
-        action.selectByVisibleText(sizeOfProduct,size);
+        if(action.isDisplayed(driver,size)) {
+            action.click(driver, size);
+            action.selectByVisibleText(sizeOfProduct, size);
+        }
+    }
+
+    public void clickOnQuantity(){
+        String productQuantity = quantity.getAttribute("value");
+        Integer presentQuantity=Integer.parseInt(productQuantity);
+        if(presentQuantity.equals(0)){
+            action.click(driver,QuantityIncreaseButton);
+        }
     }
 
     public void clickOnAddToCartButton(){
@@ -53,7 +67,7 @@ public class AddToCartPage extends BaseClass {
     }
 
     public void selectShipmentType(){
-        action.click(driver,shipmentType(shiptype2));
+        action.click(driver,getDeliveryTypeWindow(Shipment));
     }
 
     public void clickOnSubmitBtn(){
