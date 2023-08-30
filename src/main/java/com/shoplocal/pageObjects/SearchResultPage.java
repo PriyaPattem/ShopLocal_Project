@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class SearchResultPage extends BaseClass {
 
-    String ProductName="Women Regular Fit Solid Casual Shirt";
+    public String ProductName="Women Regular Fit Solid Casual Shirt";
 
     public WebElement getProductResult(String productname){
         String xpath= String.format("//h4[@class=\"caption-title text-left text-truncate\"]//a[contains(normalize-space(),'%s')]",productname);

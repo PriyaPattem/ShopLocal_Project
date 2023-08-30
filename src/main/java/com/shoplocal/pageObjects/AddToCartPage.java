@@ -21,12 +21,20 @@ public class AddToCartPage extends BaseClass {
         String xpath= String.format("//div[@class=\"notSelected\"]//following-sibling::p[text()=%s]",type);
         return driver.findElement(By.xpath(xpath));
     }
-    String shiptype="Shipment";
+    String shiptype1="PickUp";
+    String shiptype2="Shipment";
 //    @FindBy(xpath="//p[@class=\"delivery_name\" and text()=\"Shipment\"]")
 //    WebElement shipmentType;
 
     @FindBy(id="submit")
     WebElement submitBtn;
+
+    @FindBy(xpath="//span[@data-notify=\"message\" and text()=\"Product Added To Cart\"]")
+    WebElement cartAddedToastMessage;
+
+    @FindBy(xpath="//div[@class=\"icon_names\" and text()=\"Cart\"]")
+    WebElement cartIcon;
+
     public AddToCartPage(){
         PageFactory.initElements(driver,this);
     }
@@ -45,10 +53,22 @@ public class AddToCartPage extends BaseClass {
     }
 
     public void selectShipmentType(){
-        action.click(driver,shipmentType(shiptype));
+        action.click(driver,shipmentType(shiptype2));
     }
 
     public void clickOnSubmitBtn(){
         action.click(driver,submitBtn);
     }
+
+    public boolean validateAddToCart(){
+        action.explicitWait(driver,cartAddedToastMessage,20);
+        return action.isDisplayed(driver,cartAddedToastMessage);
+    }
+
+    public CartCheckoutPage clickOnCartIcon(){
+        action.click(driver,cartIcon);
+        return new CartCheckoutPage();
+    }
+
+
 }

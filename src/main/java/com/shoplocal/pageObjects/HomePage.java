@@ -30,8 +30,8 @@ public class HomePage extends BaseClass {
        return action.isDisplayed(driver,statusOfTodaysDeals);
     }
 
-    public SearchResultPage searchProduct(){
-        action.EnterText(searchField,"realme narzo");
+    public SearchResultPage searchProduct(String productname){
+        action.EnterText(searchField,productname);
         action.click(driver,searchButton);
         return new SearchResultPage();
     }
