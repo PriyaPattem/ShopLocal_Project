@@ -27,6 +27,12 @@ public class CartCheckoutPage extends BaseClass {
     @FindBy(xpath="//li[@onclick=\"changeDeliveryStatus(`shipment`)\"]")
     WebElement shipmentTypeTab;
 
+    @FindBy(xpath="//div[text()=\"Subtotal\"]//following-sibling::div[@id=\"total\"]")
+    WebElement subTotal;
+
+    @FindBy(xpath="//div[@class=\"grand_total\"]")
+    WebElement grandTotal;
+
     @FindBy(xpath = "//span[normalize-space(text()=\"Next\") and @onclick=\"checkItemStatus(`shipment`,`36`,`726`)\"]")
     WebElement nextButton;
 
@@ -59,6 +65,7 @@ public class CartCheckoutPage extends BaseClass {
 
     @FindBy(xpath="//span[@onclick=\"checkAddress();\"]")
     WebElement confirmAndPayBtn;
+
 
 
     public CartCheckoutPage(){
