@@ -85,9 +85,25 @@ public class CartCheckoutPage extends BaseClass {
         action.click(driver,nextButton);
     }
 
+    public double getSubTotal(){
+        String price=subTotal.getText();
+        String price1=price.replaceAll("[^0-9]","");
+        double subprice=Double.parseDouble(price1);
+        double finalSubtotal= subprice/100;
+        return finalSubtotal;
+    }
+
+    public double getGrandTotal(){
+        String price=grandTotal.getText();
+        String price1=price.replaceAll("[^0-9]","");
+        double grandprice=Double.parseDouble(price1);
+        double finalGrandPrice=grandprice/100;
+        return finalGrandPrice;
+    }
     public boolean visibilityOfDeliveryAddress(){
         return action.isDisplayed(driver,deliveryAddress);
     }
+
 
 
 
