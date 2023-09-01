@@ -11,16 +11,12 @@ public class CustomerLoginPage extends BaseClass {
 
     @FindBy(id="email")
     WebElement email;
-
     @FindBy(name="password")
     WebElement password;
-
     @FindBy(xpath="//button[@onclick=\"return validateUserLogin();\"]")
     WebElement loginbutton;
-
     @FindBy(xpath="//a[normalize-space(text())=\"Sign Up\"]")
     WebElement SignUp;
-
     public CustomerLoginPage(){
         PageFactory.initElements(driver,this);
     }

@@ -139,7 +139,7 @@ public class Action extends BaseClass {
             return false;
         } finally {
             if (flag) {
-                System.out.println("Select value from the DropDown");
+                System.out.println("Selected value from the DropDown");
             } else {
                 System.out.println("Not Selected value from the DropDown");
                 // throw new ElementNotFoundException("", "", "")
