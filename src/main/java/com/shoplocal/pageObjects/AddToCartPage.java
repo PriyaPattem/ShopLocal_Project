@@ -1,6 +1,7 @@
 package com.shoplocal.pageObjects;
 
 import com.shoplocal.Base.BaseClass;
+import com.shoplocal.actiondriver.Action;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -44,9 +45,9 @@ public class AddToCartPage extends BaseClass {
     }
 
     public void selectSize(String sizeOfProduct){
-        if(action.isDisplayed(driver,size)) {
-            action.click(driver, size);
-            action.selectByVisibleText(sizeOfProduct, size);
+        if(Action.isDisplayed(driver,size)) {
+            Action.performClick(driver, size);
+            Action.selectByVisibleText(sizeOfProduct, size);
         }
     }
 
@@ -54,35 +55,44 @@ public class AddToCartPage extends BaseClass {
         String productQuantity = quantity.getAttribute("value");
         Integer presentQuantity=Integer.parseInt(productQuantity);
         if(presentQuantity.equals(0)){
-            action.click(driver,QuantityIncreaseButton);
+            Action.performClick(driver,QuantityIncreaseButton);
         }
     }
 
-    public void clickOnAddToCartButton(){
-        action.click(driver,addToCartButton);
+    public boolean clickOnAddToCartButton(){
+        Action.performClick(driver,addToCartButton);
+        return visibilityOfDeliveryTypeWindow();
     }
 
     public boolean visibilityOfDeliveryTypeWindow(){
-        return action.isDisplayed(driver,DeliveryTypeWindow);
+        Action.explicitWait(driver,DeliveryTypeWindow,10);
+        return Action.isDisplayed(driver,DeliveryTypeWindow);
     }
 
     public void selectShipmentType(){
-        action.click(driver,getDeliveryTypeWindow(Shipment));
+        Action.performClick(driver,getDeliveryTypeWindow(Shipment));
     }
 
-    public void clickOnSubmitBtn(){
-        action.click(driver,submitBtn);
+    public boolean clickOnSubmitBtn(){
+        Action.performClick(driver,submitBtn);
+        return addToCartToastMessage();
     }
 
-    public boolean validateAddToCart(){
-        action.explicitWait(driver,cartAddedToastMessage,20);
-        return action.isDisplayed(driver,cartAddedToastMessage);
+    public boolean addToCartToastMessage(){
+        Action.explicitWait(driver,cartAddedToastMessage,20);
+        return Action.isDisplayed(driver,cartAddedToastMessage);
     }
 
     public CartCheckoutPage clickOnCartIcon(){
-        action.click(driver,cartIcon);
+        Action.performClick(driver,cartIcon);
         return new CartCheckoutPage();
     }
+    public String getCurrntURL(){
+        //System.out.println("curent url method called");
+        String currentURL = Action.getCurrentURL(driver);
+        return currentURL;
+    }
+
 
 
 }

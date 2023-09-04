@@ -1,6 +1,7 @@
 package com.shoplocal.pageObjects;
 
 import com.shoplocal.Base.BaseClass;
+import com.shoplocal.actiondriver.Action;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -14,7 +15,7 @@ public class MyProfilePage extends BaseClass {
     }
 
     public boolean visibilityOfOrderHistory(){
-       return action.isDisplayed(driver,orderHistory);
+       return Action.isDisplayed(driver,orderHistory);
     }
 
 }

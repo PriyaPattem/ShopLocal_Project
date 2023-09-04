@@ -1,6 +1,7 @@
 package com.shoplocal.pageObjects;
 
 import com.shoplocal.Base.BaseClass;
+import com.shoplocal.actiondriver.Action;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,7 +30,9 @@ public class CartCheckoutPage extends BaseClass {
     WebElement subTotal;
     @FindBy(xpath="//div[@class=\"grand_total\"]")
     WebElement grandTotal;
-    @FindBy(xpath = "//span[normalize-space(text()=\"Next\") and @onclick=\"checkItemStatus(`shipment`,`36`,`726`)\"]")
+    @FindBy(id="shipping")
+    WebElement shippingPrice;
+    @FindBy(xpath = "//span[normalize-space(text()=\"Next\") and @class=\"btn btn-theme-dark\"]")
     WebElement nextButton;
 
     @FindBy(xpath="//div[@class=\"delivery_address\"]")
@@ -73,21 +76,26 @@ public class CartCheckoutPage extends BaseClass {
     @FindBy(xpath="//button[@onclick=\"stripePay(event)\"]")
     WebElement paynowBtn;
 
+    @FindBy(xpath="//button[@id=\"noRegister\"]")
+    WebElement noRegister;
+
     public CartCheckoutPage(){
         PageFactory.initElements(driver,this);
     }
-    public void clickOnShipmentTypeTab(){
+    public boolean clickOnShipmentTypeTab(){
         if(noItemsMessage.isDisplayed() && pickUpActive.isDisplayed()){
-            action.click(driver,shipmentTypeTab);
+            Action.performClick(driver,shipmentTypeTab);
         }
+        return productAvailabiilityInCart();
     }
 
     public boolean productAvailabiilityInCart(){
-        return action.isDisplayed(driver,productDetailsInCart(productNameInCart));
+        return Action.isDisplayed(driver,productDetailsInCart(productNameInCart));
     }
 
     public void clickOnNextButton(){
-        action.click(driver,nextButton);
+        Action.explicitWait(driver,nextButton,10);
+        Action.performClick(driver,nextButton);
     }
 
     public double getSubTotal(){
@@ -105,34 +113,51 @@ public class CartCheckoutPage extends BaseClass {
         double finalGrandPrice=grandprice/100;
         return finalGrandPrice;
     }
+
+    public double getShippingPrice(){
+        String price = shippingPrice.getText();
+        String price1=price.replaceAll("[^0-9]","");
+        double shipPrice = Double.parseDouble(price1);
+        double finalShipPrice=shipPrice/100;
+        return finalShipPrice;
+    }
     public boolean visibilityOfDeliveryAddress(){
-        return action.isDisplayed(driver,deliveryAddress);
+        return Action.isDisplayed(driver,deliveryAddress);
     }
 
     public WebElement validateDeliveryAddressForm(String Uname, String email, String phNum, String address, String cityname, String stateName, String countryName, String zip){
-        action.EnterText(name,Uname);
-        action.EnterText(emailId,email);
-        action.EnterText(phone,phNum);
-        action.EnterText(this.address,address);
-        action.EnterText(city,cityname);
-        action.EnterText(state,stateName);
-        action.selectByVisibleText(countryName,country);
-        action.EnterText(this.zip,zip);
-        action.click(driver,confirmAndPayBtn);
+        Action.explicitWait(driver,deliveryAddress,10);
+        Action.EnterText(name,Uname);
+        Action.EnterText(emailId,email);
+        Action.EnterText(phone,phNum);
+        Action.EnterText(this.address,address);
+        Action.EnterText(city,cityname);
+        Action.EnterText(state,stateName);
+        Action.selectByVisibleText(countryName,country);
+        Action.EnterText(this.zip,zip);
+        Action.performClick(driver,confirmAndPayBtn);
         return cardDetailsModel;
 
     }
 
+    public void clickOnNoRegister(){
+        Action.performClick(driver,noRegister);
+    }
+
     public HomePage validateCardDetails(String chName, String chAddress, String chNumber, String cardExpMonth, String cardExpYear, String cardcvv){
-        action.EnterText(cardHolderName,chName);
-        action.EnterText(cardHolderAddress,chAddress);
-        action.EnterText(cardHolderNumber,chNumber);
-        action.EnterText(cardExpiryMonth,cardExpMonth);
-        action.EnterText(cardExpiryYear,cardExpYear);
-        action.EnterText(cardCvv,cardcvv);
-        action.click(driver,paynowBtn);
+        Action.EnterText(cardHolderName,chName);
+        Action.EnterText(cardHolderAddress,chAddress);
+        Action.EnterText(cardHolderNumber,chNumber);
+        Action.EnterText(cardExpiryMonth,cardExpMonth);
+        Action.EnterText(cardExpiryYear,cardExpYear);
+        Action.EnterText(cardCvv,cardcvv);
+        Action.performClick(driver,paynowBtn);
         return new HomePage();
     }
-    
+
+    public String getCurrntURL(){
+        String currentURL = Action.getCurrentURL(driver);
+        return currentURL;
+    }
 
 }

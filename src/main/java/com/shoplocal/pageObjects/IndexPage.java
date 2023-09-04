@@ -8,36 +8,49 @@ import com.shoplocal.actiondriver.Action;
 
 public class IndexPage extends BaseClass {
 
-
     @FindBy(xpath = "//a[normalize-space(text())='Login']")
     WebElement LoginButton;
 
-    @FindBy(className = "shoplocal_logo")
+    @FindBy(xpath="//div[@class=\"shoplocal_logo\"]")
     WebElement Logo;
 
     @FindBy(xpath = "//a[@href=\"https://bu1is.krify.com/shoplocal_dev/home\"]//button[@type=\"button\"]")
     WebElement ExploreOnlineProducts;
 
+    @FindBy(xpath="//iframe[@src=\"data:text/html;charset=utf-8,%3Cbody%3E%3C%2Fbody%3E\"]")
+    WebElement switchToFrame;
+
     public IndexPage(){
         PageFactory.initElements(driver,this);
     }
     public LoginTypePage clickOnlogin(){
-      action.click(driver,LoginButton);
+        //Action.explicitWait(driver,switchToFrame,20);
+       // Action.switchToFrameByWebElement(driver,switchToFrame);
+        Action.explicitWait(driver,LoginButton,20);
+        Action.performClick(driver,LoginButton);
       return new LoginTypePage();
     }
 
     public boolean ValidateLogo(){
-       return action.isDisplayed(driver,Logo);
+        Action.switchToFrameByWebElement(driver,switchToFrame);
+        //action.explicitWait(driver,Logo,20);
+       return Action.isDisplayed(driver,Logo);
+
     }
 
     public HomePage ClickOnExplore(){
-        action.click(driver,ExploreOnlineProducts);
+        Action.performClick(driver,ExploreOnlineProducts);
         return new HomePage();
     }
 
     public String validatePageTitle(){
-      String pageTitle =  action.getTitle(driver);
+      String pageTitle =  Action.getTitle(driver);
       return pageTitle;
+    }
+    public String getCurrntURL(){
+        System.out.println("curent url method called");
+        String currentURL = Action.getCurrentURL(driver);
+        return currentURL;
     }
 
 

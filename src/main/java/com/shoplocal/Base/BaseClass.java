@@ -17,8 +17,6 @@ import java.util.Properties;
 
 public class BaseClass {
 
-    public static Action action = new Action();
-
     public static Properties prop;
     public static WebDriver driver;
 
@@ -26,7 +24,7 @@ public class BaseClass {
     public void loadConfig() {
         try {
             prop = new Properties();
-            System.out.println("super constructor invoked");
+           // System.out.println("super constructor invoked");
             FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "\\configuration\\Dev_Config.properties");
             prop.load(fis);
         } catch (FileNotFoundException e) {
@@ -49,9 +47,9 @@ public class BaseClass {
         }
         driver.get(prop.getProperty("baseUrl"));
 
-        action.implicitWait(driver,20);
-        action.pageLoadTimeOut(driver,20);
-        action.launchUrl(driver,prop.getProperty("baseUrl"));
+        Action.implicitWait(driver,20);
+        Action.pageLoadTimeOut(driver,20);
+        Action.launchUrl(driver,prop.getProperty("baseUrl"));
     }
 
 }

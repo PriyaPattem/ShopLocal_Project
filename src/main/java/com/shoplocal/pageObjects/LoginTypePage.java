@@ -8,15 +8,21 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginTypePage extends BaseClass {
 
-    @FindBy(xpath="//button[text()=\"Login\"]//ancestor::a//parent::div//child::h1[text()=\"Customer Login\"]")
+    @FindBy(xpath="//h1[text()=\"Customer Login\"]//following-sibling::a/button")
     WebElement customerLogin;
+
 
     public LoginTypePage(){
         PageFactory.initElements(driver,this);
     }
 
+    public String getCurrntURL(){
+        String currentURL = Action.getCurrentURL(driver);
+        return currentURL;
+    }
+
     public CustomerLoginPage clickOnCustomerLogin(){
-        action.click(driver,customerLogin);
+        Action.performClick(driver,customerLogin);
         return new CustomerLoginPage();
     }
 

@@ -22,15 +22,20 @@ public class CustomerLoginPage extends BaseClass {
     }
 
     public IndexPage validatelogin(String username, String pwd){
-     action.EnterText(email,username);
-     action.EnterText(password,pwd);
-     action.click(driver,loginbutton);
-     return new IndexPage();
+        Action.EnterText(email,username);
+        Action.EnterText(password,pwd);
+        Action.performClick(driver,loginbutton);
+        //Action.implicitWait(driver,5);
+        return new IndexPage();
     }
 
     public AccountCreationPage clickOnSignUp(){
-        action.click(driver,SignUp);
+        Action.performClick(driver,SignUp);
         return new AccountCreationPage();
+    }
+    public String getCurrntURL(){
+        String currentURL = Action.getCurrentURL(driver);
+        return currentURL;
     }
 
 }

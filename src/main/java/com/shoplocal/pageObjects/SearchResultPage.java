@@ -11,7 +11,7 @@ public class SearchResultPage extends BaseClass {
 
     public String ProductName="Women Regular Fit Solid Casual Shirt";
 
-    public WebElement getProductResult(String productname){
+    public WebElement getProductResult(String productname){  // dynamic xpath for product result
         String xpath= String.format("//h4[@class=\"caption-title text-left text-truncate\"]//a[contains(normalize-space(),'%s')]",productname);
         return driver.findElement(By.xpath(xpath));
     }
@@ -23,12 +23,17 @@ public class SearchResultPage extends BaseClass {
     }
 
     public boolean productAvailability(){
-        return action.isDisplayed(driver,getProductResult(ProductName));
+        return Action.isDisplayed(driver,getProductResult(ProductName));
     }
 
     public AddToCartPage clickOnproduct(){
-        action.click(driver,getProductResult(ProductName));
+        Action.performClick(driver,getProductResult(ProductName));
         return new AddToCartPage();
+    }
+    public String getCurrntURL(){
+        //System.out.println("curent url method called");
+        String currentURL = Action.getCurrentURL(driver);
+        return currentURL;
     }
 
 }

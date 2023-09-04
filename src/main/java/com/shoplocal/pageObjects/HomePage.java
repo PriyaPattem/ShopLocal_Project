@@ -26,14 +26,20 @@ public class HomePage extends BaseClass {
     }
 
     public boolean ClickOnTodaysDeals(){
-        action.click(driver,TodaysDeals);
-       return action.isDisplayed(driver,statusOfTodaysDeals);
+        Action.performClick(driver,TodaysDeals);
+       return Action.isDisplayed(driver,statusOfTodaysDeals);
     }
 
     public SearchResultPage searchProduct(String productname){
-        action.EnterText(searchField,productname);
-        action.click(driver,searchButton);
+        Action.EnterText(searchField,productname);
+        Action.performClick(driver,searchButton);
         return new SearchResultPage();
+    }
+
+    public String getCurrntURL(){
+        Action.pageLoadTimeOut(driver,10);
+        String currentURL = Action.getCurrentURL(driver);
+        return currentURL;
     }
 
 

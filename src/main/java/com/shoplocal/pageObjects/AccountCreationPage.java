@@ -1,6 +1,7 @@
 package com.shoplocal.pageObjects;
 
 import com.shoplocal.Base.BaseClass;
+import com.shoplocal.actiondriver.Action;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -31,16 +32,22 @@ public class AccountCreationPage extends BaseClass {
     }
 
     public MyProfilePage validateRegistration(String fname, String lname, String mail, String phNum, String pwd, String confirmPwd){
-        action.EnterText(firstName,fname);
-        action.EnterText(lastName,lname);
-        action.EnterText(email,mail);
-        action.EnterText(phone,phNum);
-        action.EnterText(password,pwd);
-        action.EnterText(confirmPassword,confirmPwd);
-        action.click(driver,ageCheckbox);
-        action.click(driver,termsCheckbox);
-        action.click(driver,registorButton);
+        Action.EnterText(firstName,fname);
+        Action.EnterText(lastName,lname);
+        Action.EnterText(email,mail);
+        Action.EnterText(phone,phNum);
+        Action.EnterText(password,pwd);
+        Action.EnterText(confirmPassword,confirmPwd);
+        Action.performClick(driver,ageCheckbox);
+        Action.performClick(driver,termsCheckbox);
+        Action.performClick(driver,registorButton);
         return new MyProfilePage();
+    }
+
+    public String getCurrntURL(){
+        System.out.println("curent url method called");
+        String currentURL = Action.getCurrentURL(driver);
+        return currentURL;
     }
 
     public void validateRegistrationFromCheckout(){
