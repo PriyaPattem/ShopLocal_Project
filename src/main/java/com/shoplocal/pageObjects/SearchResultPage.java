@@ -13,26 +13,26 @@ public class SearchResultPage extends BaseClass {
 
     public WebElement getProductResult(String productname){  // dynamic xpath for product result
         String xpath= String.format("//h4[@class=\"caption-title text-left text-truncate\"]//a[contains(normalize-space(),'%s')]",productname);
-        return driver.findElement(By.xpath(xpath));
+        return getDriver().findElement(By.xpath(xpath));
     }
     // @FindBy(xpath="//h4[@class=\"caption-title text-left text-truncate\"]//a[contains(normalize-space(),'Women Regular Fit Solid Casual Shirt')]")
     // WebElement productResult;
 
     public SearchResultPage(){
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(getDriver(),this);
     }
 
     public boolean productAvailability(){
-        return Action.isDisplayed(driver,getProductResult(ProductName));
+        return Action.isDisplayed(getDriver(),getProductResult(ProductName));
     }
 
     public AddToCartPage clickOnproduct(){
-        Action.performClick(driver,getProductResult(ProductName));
+        Action.performClick(getDriver(),getProductResult(ProductName));
         return new AddToCartPage();
     }
     public String getCurrntURL(){
         //System.out.println("curent url method called");
-        String currentURL = Action.getCurrentURL(driver);
+        String currentURL = Action.getCurrentURL(getDriver());
         return currentURL;
     }
 

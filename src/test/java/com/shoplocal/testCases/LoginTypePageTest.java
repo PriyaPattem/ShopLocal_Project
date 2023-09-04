@@ -1,4 +1,4 @@
-package com.shoplocal.Testcases;
+package com.shoplocal.testCases;
 
 import com.shoplocal.Base.BaseClass;
 import com.shoplocal.pageObjects.CustomerLoginPage;
@@ -22,7 +22,7 @@ public class LoginTypePageTest extends BaseClass {
 
     @AfterMethod
     public void tearDown(){
-        driver.quit();
+        getDriver().quit();
     }
 
     @Test

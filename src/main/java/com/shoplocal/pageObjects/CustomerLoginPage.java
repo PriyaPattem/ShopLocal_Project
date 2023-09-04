@@ -18,23 +18,23 @@ public class CustomerLoginPage extends BaseClass {
     @FindBy(xpath="//a[normalize-space(text())=\"Sign Up\"]")
     WebElement SignUp;
     public CustomerLoginPage(){
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(getDriver(),this);
     }
 
     public IndexPage validatelogin(String username, String pwd){
         Action.EnterText(email,username);
         Action.EnterText(password,pwd);
-        Action.performClick(driver,loginbutton);
-        //Action.implicitWait(driver,5);
+        Action.performClick(getDriver(),loginbutton);
+        //Action.implicitWait(getDriver(),5);
         return new IndexPage();
     }
 
     public AccountCreationPage clickOnSignUp(){
-        Action.performClick(driver,SignUp);
+        Action.performClick(getDriver(),SignUp);
         return new AccountCreationPage();
     }
     public String getCurrntURL(){
-        String currentURL = Action.getCurrentURL(driver);
+        String currentURL = Action.getCurrentURL(getDriver());
         return currentURL;
     }
 

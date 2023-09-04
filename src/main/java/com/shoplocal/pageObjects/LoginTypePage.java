@@ -13,16 +13,16 @@ public class LoginTypePage extends BaseClass {
 
 
     public LoginTypePage(){
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(getDriver(),this);
     }
 
     public String getCurrntURL(){
-        String currentURL = Action.getCurrentURL(driver);
+        String currentURL = Action.getCurrentURL(getDriver());
         return currentURL;
     }
 
     public CustomerLoginPage clickOnCustomerLogin(){
-        Action.performClick(driver,customerLogin);
+        Action.performClick(getDriver(),customerLogin);
         return new CustomerLoginPage();
     }
 

@@ -14,7 +14,7 @@ public class CartCheckoutPage extends BaseClass {
 
    public WebElement productDetailsInCart(String text){
        String xpath=String.format("//tbody[@id=\"orderData\"]/.//a[normalize-space('%s')]",text);
-       return driver.findElement(By.xpath(xpath));
+       return getDriver().findElement(By.xpath(xpath));
    }
 
     // xpath=//tbody[@id="orderData"]/.//a[normalize-space("Women Regular Fit Solid Casual Shirt")]
@@ -80,22 +80,22 @@ public class CartCheckoutPage extends BaseClass {
     WebElement noRegister;
 
     public CartCheckoutPage(){
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(getDriver(),this);
     }
     public boolean clickOnShipmentTypeTab(){
         if(noItemsMessage.isDisplayed() && pickUpActive.isDisplayed()){
-            Action.performClick(driver,shipmentTypeTab);
+            Action.performClick(getDriver(),shipmentTypeTab);
         }
         return productAvailabiilityInCart();
     }
 
     public boolean productAvailabiilityInCart(){
-        return Action.isDisplayed(driver,productDetailsInCart(productNameInCart));
+        return Action.isDisplayed(getDriver(),productDetailsInCart(productNameInCart));
     }
 
     public void clickOnNextButton(){
-        Action.explicitWait(driver,nextButton,10);
-        Action.performClick(driver,nextButton);
+        Action.explicitWait(getDriver(),nextButton,10);
+        Action.performClick(getDriver(),nextButton);
     }
 
     public double getSubTotal(){
@@ -122,11 +122,11 @@ public class CartCheckoutPage extends BaseClass {
         return finalShipPrice;
     }
     public boolean visibilityOfDeliveryAddress(){
-        return Action.isDisplayed(driver,deliveryAddress);
+        return Action.isDisplayed(getDriver(),deliveryAddress);
     }
 
     public WebElement validateDeliveryAddressForm(String Uname, String email, String phNum, String address, String cityname, String stateName, String countryName, String zip){
-        Action.explicitWait(driver,deliveryAddress,10);
+        Action.explicitWait(getDriver(),deliveryAddress,10);
         Action.EnterText(name,Uname);
         Action.EnterText(emailId,email);
         Action.EnterText(phone,phNum);
@@ -135,13 +135,13 @@ public class CartCheckoutPage extends BaseClass {
         Action.EnterText(state,stateName);
         Action.selectByVisibleText(countryName,country);
         Action.EnterText(this.zip,zip);
-        Action.performClick(driver,confirmAndPayBtn);
+        Action.performClick(getDriver(),confirmAndPayBtn);
         return cardDetailsModel;
 
     }
 
     public void clickOnNoRegister(){
-        Action.performClick(driver,noRegister);
+        Action.performClick(getDriver(),noRegister);
     }
 
     public HomePage validateCardDetails(String chName, String chAddress, String chNumber, String cardExpMonth, String cardExpYear, String cardcvv){
@@ -151,12 +151,12 @@ public class CartCheckoutPage extends BaseClass {
         Action.EnterText(cardExpiryMonth,cardExpMonth);
         Action.EnterText(cardExpiryYear,cardExpYear);
         Action.EnterText(cardCvv,cardcvv);
-        Action.performClick(driver,paynowBtn);
+        Action.performClick(getDriver(),paynowBtn);
         return new HomePage();
     }
 
     public String getCurrntURL(){
-        String currentURL = Action.getCurrentURL(driver);
+        String currentURL = Action.getCurrentURL(getDriver());
         return currentURL;
     }
 

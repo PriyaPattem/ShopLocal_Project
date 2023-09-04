@@ -1,4 +1,4 @@
-package com.shoplocal.Testcases;
+package com.shoplocal.testCases;
 
 import com.shoplocal.Base.BaseClass;
 import org.testng.annotations.AfterMethod;
@@ -12,6 +12,6 @@ public class AccountCreationPageTest extends BaseClass {
 
     @AfterMethod
     public void tearDown(){
-        driver.quit();
+        getDriver().quit();
     }
 }

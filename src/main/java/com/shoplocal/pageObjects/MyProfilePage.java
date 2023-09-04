@@ -11,11 +11,15 @@ public class MyProfilePage extends BaseClass {
     WebElement orderHistory;
 
     public MyProfilePage(){
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(getDriver(),this);
     }
 
     public boolean visibilityOfOrderHistory(){
-       return Action.isDisplayed(driver,orderHistory);
+       return Action.isDisplayed(getDriver(),orderHistory);
+    }
+    public String getCurrntURL(){
+        String currentURL = Action.getCurrentURL(getDriver());
+        return currentURL;
     }
 
 }

@@ -22,23 +22,23 @@ public class HomePage extends BaseClass {
     WebElement searchButton;
 
     public HomePage(){
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(getDriver(),this);
     }
 
     public boolean ClickOnTodaysDeals(){
-        Action.performClick(driver,TodaysDeals);
-       return Action.isDisplayed(driver,statusOfTodaysDeals);
+        Action.performClick(getDriver(),TodaysDeals);
+       return Action.isDisplayed(getDriver(),statusOfTodaysDeals);
     }
 
     public SearchResultPage searchProduct(String productname){
         Action.EnterText(searchField,productname);
-        Action.performClick(driver,searchButton);
+        Action.performClick(getDriver(),searchButton);
         return new SearchResultPage();
     }
 
     public String getCurrntURL(){
-        Action.pageLoadTimeOut(driver,10);
-        String currentURL = Action.getCurrentURL(driver);
+        Action.pageLoadTimeOut(getDriver(),10);
+        String currentURL = Action.getCurrentURL(getDriver());
         return currentURL;
     }
 

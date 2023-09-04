@@ -20,7 +20,7 @@ public class AddToCartPage extends BaseClass {
 
     public WebElement getDeliveryTypeWindow(String type){    // dynamic xpath to select the delivery type
         String xpath= String.format("//div[@id='%s']",type);
-        return driver.findElement(By.xpath(xpath));
+        return getDriver().findElement(By.xpath(xpath));
     }
     String PickUp="Dummy";
     String Shipment="Dummy1";
@@ -41,12 +41,12 @@ public class AddToCartPage extends BaseClass {
     WebElement QuantityIncreaseButton;
 
     public AddToCartPage(){
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(getDriver(),this);
     }
 
     public void selectSize(String sizeOfProduct){
-        if(Action.isDisplayed(driver,size)) {
-            Action.performClick(driver, size);
+        if(Action.isDisplayed(getDriver(),size)) {
+            Action.performClick(getDriver(), size);
             Action.selectByVisibleText(sizeOfProduct, size);
         }
     }
@@ -55,41 +55,41 @@ public class AddToCartPage extends BaseClass {
         String productQuantity = quantity.getAttribute("value");
         Integer presentQuantity=Integer.parseInt(productQuantity);
         if(presentQuantity.equals(0)){
-            Action.performClick(driver,QuantityIncreaseButton);
+            Action.performClick(getDriver(),QuantityIncreaseButton);
         }
     }
 
     public boolean clickOnAddToCartButton(){
-        Action.performClick(driver,addToCartButton);
+        Action.performClick(getDriver(),addToCartButton);
         return visibilityOfDeliveryTypeWindow();
     }
 
     public boolean visibilityOfDeliveryTypeWindow(){
-        Action.explicitWait(driver,DeliveryTypeWindow,10);
-        return Action.isDisplayed(driver,DeliveryTypeWindow);
+        Action.explicitWait(getDriver(),DeliveryTypeWindow,10);
+        return Action.isDisplayed(getDriver(),DeliveryTypeWindow);
     }
 
     public void selectShipmentType(){
-        Action.performClick(driver,getDeliveryTypeWindow(Shipment));
+        Action.performClick(getDriver(),getDeliveryTypeWindow(Shipment));
     }
 
     public boolean clickOnSubmitBtn(){
-        Action.performClick(driver,submitBtn);
+        Action.performClick(getDriver(),submitBtn);
         return addToCartToastMessage();
     }
 
     public boolean addToCartToastMessage(){
-        Action.explicitWait(driver,cartAddedToastMessage,20);
-        return Action.isDisplayed(driver,cartAddedToastMessage);
+        Action.explicitWait(getDriver(),cartAddedToastMessage,20);
+        return Action.isDisplayed(getDriver(),cartAddedToastMessage);
     }
 
     public CartCheckoutPage clickOnCartIcon(){
-        Action.performClick(driver,cartIcon);
+        Action.performClick(getDriver(),cartIcon);
         return new CartCheckoutPage();
     }
     public String getCurrntURL(){
         //System.out.println("curent url method called");
-        String currentURL = Action.getCurrentURL(driver);
+        String currentURL = Action.getCurrentURL(getDriver());
         return currentURL;
     }
 

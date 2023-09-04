@@ -1,9 +1,10 @@
-package com.shoplocal.Testcases;
+package com.shoplocal.testCases;
 
 import com.shoplocal.Base.BaseClass;
 import com.shoplocal.pageObjects.HomePage;
 import com.shoplocal.pageObjects.IndexPage;
 import com.shoplocal.pageObjects.LoginTypePage;
+import com.shoplocal.utility.Log;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -22,14 +23,18 @@ public class IndexPageTest extends BaseClass {
 
     @AfterMethod
     public void tearDown(){
-        driver.quit();
+        getDriver().quit();
     }
 
     @Test
     public void validateLogoTest(){
+        Log.startTestCase("validateLogo Test");
         indexPage = new IndexPage();
-       boolean result = indexPage.ValidateLogo();
+        Log.info("will check for logo");
+        boolean result = indexPage.ValidateLogo();
         Assert.assertTrue(result);
+        Log.info("Logo is displayed");
+        Log.endTestCase("validateLogoTest is success");
     }
 
     @Test

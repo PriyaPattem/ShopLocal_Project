@@ -28,7 +28,7 @@ public class AccountCreationPage extends BaseClass {
     WebElement registorButton;
 
     public AccountCreationPage(){
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(getDriver(),this);
     }
 
     public MyProfilePage validateRegistration(String fname, String lname, String mail, String phNum, String pwd, String confirmPwd){
@@ -38,15 +38,15 @@ public class AccountCreationPage extends BaseClass {
         Action.EnterText(phone,phNum);
         Action.EnterText(password,pwd);
         Action.EnterText(confirmPassword,confirmPwd);
-        Action.performClick(driver,ageCheckbox);
-        Action.performClick(driver,termsCheckbox);
-        Action.performClick(driver,registorButton);
+        Action.performClick(getDriver(),ageCheckbox);
+        Action.performClick(getDriver(),termsCheckbox);
+        Action.performClick(getDriver(),registorButton);
         return new MyProfilePage();
     }
 
     public String getCurrntURL(){
         System.out.println("curent url method called");
-        String currentURL = Action.getCurrentURL(driver);
+        String currentURL = Action.getCurrentURL(getDriver());
         return currentURL;
     }
 

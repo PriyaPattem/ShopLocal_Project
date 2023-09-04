@@ -21,35 +21,35 @@ public class IndexPage extends BaseClass {
     WebElement switchToFrame;
 
     public IndexPage(){
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(getDriver(),this);
     }
     public LoginTypePage clickOnlogin(){
-        //Action.explicitWait(driver,switchToFrame,20);
-       // Action.switchToFrameByWebElement(driver,switchToFrame);
-        Action.explicitWait(driver,LoginButton,20);
-        Action.performClick(driver,LoginButton);
+        //Action.explicitWait(getDriver(),switchToFrame,20);
+       // Action.switchToFrameByWebElement(getDriver(),switchToFrame);
+        Action.explicitWait(getDriver(),LoginButton,20);
+        Action.performClick(getDriver(),LoginButton);
       return new LoginTypePage();
     }
 
     public boolean ValidateLogo(){
-        Action.switchToFrameByWebElement(driver,switchToFrame);
-        //action.explicitWait(driver,Logo,20);
-       return Action.isDisplayed(driver,Logo);
+        Action.switchToFrameByWebElement(getDriver(),switchToFrame);
+        //action.explicitWait(getDriver(),Logo,20);
+       return Action.isDisplayed(getDriver(),Logo);
 
     }
 
     public HomePage ClickOnExplore(){
-        Action.performClick(driver,ExploreOnlineProducts);
+        Action.performClick(getDriver(),ExploreOnlineProducts);
         return new HomePage();
     }
 
     public String validatePageTitle(){
-      String pageTitle =  Action.getTitle(driver);
+      String pageTitle =  Action.getTitle(getDriver());
       return pageTitle;
     }
     public String getCurrntURL(){
         System.out.println("curent url method called");
-        String currentURL = Action.getCurrentURL(driver);
+        String currentURL = Action.getCurrentURL(getDriver());
         return currentURL;
     }
 
