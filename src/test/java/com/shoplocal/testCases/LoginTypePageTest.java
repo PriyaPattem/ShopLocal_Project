@@ -15,17 +15,17 @@ public class LoginTypePageTest extends BaseClass {
     LoginTypePage loginTypePage;
     CustomerLoginPage customerLoginPage;
 
-    @BeforeMethod
-    public void setUp(){
-        launchApp();
+    @BeforeMethod(groups ={"Smoke","Sanity","Regression"})
+    public void setUp(String browser){
+        launchApp(browser);
     }
 
-    @AfterMethod
+    @AfterMethod(groups ={"Smoke","Sanity","Regression"})
     public void tearDown(){
         getDriver().quit();
     }
 
-    @Test
+    @Test(groups = "Smoke")
     public void clickOnCustomerLoginTest() {
         loginTypePage=new LoginTypePage();
         indexPage = new IndexPage();
@@ -35,4 +35,5 @@ public class LoginTypePageTest extends BaseClass {
         String expectedUrl="https://bu1is.krify.com/shoplocal_dev/home/login_set/login";
         Assert.assertEquals(actualUrl,expectedUrl);
     }
+
 }

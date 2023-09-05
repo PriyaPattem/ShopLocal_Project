@@ -36,8 +36,13 @@ public class HomePage extends BaseClass {
         return new SearchResultPage();
     }
 
+    public String getCurrntURL1(String homeUrl){
+        Action.UrlContains(getDriver(),homeUrl);
+        String currentURL = Action.getCurrentURL(getDriver());
+        return currentURL;
+    }
     public String getCurrntURL(){
-        Action.pageLoadTimeOut(getDriver(),10);
+
         String currentURL = Action.getCurrentURL(getDriver());
         return currentURL;
     }

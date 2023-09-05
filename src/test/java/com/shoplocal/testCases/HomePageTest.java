@@ -15,16 +15,16 @@ public class HomePageTest extends BaseClass {
     HomePage homePage;
     SearchResultPage searchResultPage;
 
-    @BeforeMethod
-    public void setUp(){
-        launchApp();
+    @BeforeMethod(groups ={"Smoke","Sanity","Regression"})
+    public void setUp(String browser){
+        launchApp(browser);
     }
 
-    @AfterMethod
+    @AfterMethod(groups ={"Smoke","Sanity","Regression"})
     public void tearDown(){
         getDriver().quit();
     }
-    @Test
+    @Test(groups = "Smoke")
     public void ClickOnTodaysDealsTest() {
         indexPage = new IndexPage();
         homePage=new HomePage();
@@ -32,7 +32,7 @@ public class HomePageTest extends BaseClass {
         boolean result = homePage.ClickOnTodaysDeals();
         Assert.assertTrue(result);
     }
-    @Test
+    @Test(groups = "Smoke")
     public void searchProductTest(){
         indexPage = new IndexPage();
         homePage=new HomePage();

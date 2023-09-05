@@ -17,17 +17,17 @@ public class CustomerLoginPageTest extends BaseClass {
     HomePage homePage;
     AccountCreationPage accountCreationPage;
 
-    @BeforeMethod
-    public void setUp(){
-        launchApp();
+    @BeforeMethod(groups ={"Smoke","Sanity","Regression"})
+    public void setUp(String browser){
+        launchApp(browser);
     }
 
-    @AfterMethod
+    @AfterMethod(groups ={"Smoke","Sanity","Regression"})
     public void tearDown(){
         getDriver().quit();
     }
 
-    @Test(dataProvider = "LoginData", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = "CustomerLoginData", dataProviderClass = DataProviders.class,groups = {"Smoke","Sanity"})
     public void validateLoginTest(String uname,String pwd){
         indexPage=new IndexPage();
         loginTypePage=new LoginTypePage();
@@ -37,13 +37,13 @@ public class CustomerLoginPageTest extends BaseClass {
         customerLoginPage=loginTypePage.clickOnCustomerLogin();
         //indexPage = customerLoginPage.validatelogin(prop.getProperty("username"), prop.getProperty("password"));
         indexPage = customerLoginPage.validatelogin(uname,pwd);
-        String actualUrl= indexPage.getCurrntURL();
         String expectedUrl="https://bu1is.krify.com/shoplocal_dev/";
+        String actualUrl= indexPage.getCurrntURL(expectedUrl);
         Assert.assertEquals(actualUrl,expectedUrl);
         System.out.println("validateLoginTest passed");
     }
 
-    @Test
+    @Test(groups = "Smoke")
     public void clickOnSignUpTest(){
         indexPage=new IndexPage();
         loginTypePage=new LoginTypePage();

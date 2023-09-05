@@ -33,6 +33,7 @@ public class Action extends BaseClass {
         act.moveToElement(ele).click().build().perform();
 
     }
+
     public static boolean performClick(WebDriver driver,WebElement ele) {
         boolean flag = false;
         try {
@@ -664,6 +665,15 @@ public class Action extends BaseClass {
     public static void pageLoadTimeOut(WebDriver driver, int timeOut) {
        // driver.manage().timeouts().pageLoadTimeout(timeOut, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(timeOut));
+    }
+    public static void UrlToBe(WebDriver driver, String url){
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.urlToBe(url));
+    }
+
+    public static void UrlContains(WebDriver driver, String Urltext){
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.urlContains(Urltext));
     }
 
     public static String screenShot(WebDriver driver, String filename) {

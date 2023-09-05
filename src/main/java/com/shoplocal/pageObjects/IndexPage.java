@@ -47,8 +47,8 @@ public class IndexPage extends BaseClass {
       String pageTitle =  Action.getTitle(getDriver());
       return pageTitle;
     }
-    public String getCurrntURL(){
-        System.out.println("curent url method called");
+    public String getCurrntURL(String indexUrl){
+        Action.UrlToBe(getDriver(),indexUrl);
         String currentURL = Action.getCurrentURL(getDriver());
         return currentURL;
     }

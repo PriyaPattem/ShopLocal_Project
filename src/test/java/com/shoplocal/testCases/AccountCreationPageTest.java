@@ -6,8 +6,8 @@ import org.testng.annotations.BeforeMethod;
 
 public class AccountCreationPageTest extends BaseClass {
     @BeforeMethod
-    public void setUp(){
-        launchApp();
+    public void setUp(String browser){
+        launchApp(browser);
     }
 
     @AfterMethod

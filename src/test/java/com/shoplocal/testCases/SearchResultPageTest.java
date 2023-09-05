@@ -15,16 +15,16 @@ public class SearchResultPageTest extends BaseClass {
     HomePage homePage;
     SearchResultPage searchResultPage;
     AddToCartPage addToCartPage;
-    @BeforeMethod
-    public void setUp(){
-        launchApp();
+    @BeforeMethod(groups ={"Smoke","Sanity","Regression"})
+    public void setUp(String browser){
+        launchApp(browser);
     }
-    @AfterMethod
+    @AfterMethod(groups ={"Smoke","Sanity","Regression"})
     public void tearDown(){
         getDriver().quit();
     }
 
-    @Test
+    @Test(groups = "Smoke")
     public void clickOnProductTest(){
         indexPage=new IndexPage();
         homePage=new HomePage();

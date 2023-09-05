@@ -13,7 +13,7 @@ public class CustomerLoginPage extends BaseClass {
     WebElement email;
     @FindBy(name="password")
     WebElement password;
-    @FindBy(xpath="//button[@onclick=\"return validateUserLogin();\"]")
+    @FindBy(xpath="//button[@class=\"btn btn-theme-sm btn-block btn-theme-dark login_btn enterer\"]")
     WebElement loginbutton;
     @FindBy(xpath="//a[normalize-space(text())=\"Sign Up\"]")
     WebElement SignUp;
@@ -21,11 +21,10 @@ public class CustomerLoginPage extends BaseClass {
         PageFactory.initElements(getDriver(),this);
     }
 
-    public IndexPage validatelogin(String username, String pwd){
+    public IndexPage validatelogin(String username, String pwd) {
         Action.EnterText(email,username);
         Action.EnterText(password,pwd);
         Action.performClick(getDriver(),loginbutton);
-        //Action.implicitWait(getDriver(),5);
         return new IndexPage();
     }
 

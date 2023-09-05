@@ -10,6 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -24,7 +25,7 @@ public class BaseClass {
     //Declare ThreadLocal driver
     public static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<>();
 
-    @BeforeSuite
+    @BeforeSuite(groups ={"Smoke","Sanity","Regression"})
     public void beforeSuite(){
         DOMConfigurator.configure("log4j.xml");
     }
@@ -33,7 +34,7 @@ public class BaseClass {
         return driver.get();
     }
 
-    @BeforeTest
+    @BeforeTest(groups ={"Smoke","Sanity","Regression"})
     public void loadConfig() {
         try {
             prop = new Properties();
@@ -47,10 +48,10 @@ public class BaseClass {
         }
     }
 
-    public static void launchApp() {
+    @Parameters("browser")
+    public static void launchApp(String browserName) {
         WebDriverManager.chromedriver().setup();
-        String browserName = prop.getProperty("browser");
-
+        //String browserName = prop.getProperty("browser");
         if (browserName.equalsIgnoreCase("Chrome")) {
           //  driver = new ChromeDriver();
            // set driver to ThreadLocalMap

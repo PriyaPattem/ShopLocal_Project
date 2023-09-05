@@ -13,17 +13,16 @@ public class CartCheckoutPageTest extends BaseClass {
     SearchResultPage searchResultPage;
     AddToCartPage addToCartPage;
     CartCheckoutPage cartCheckoutPage;
-    @BeforeMethod
-    public void setUp(){
-        launchApp();
+    @BeforeMethod(groups ={"Smoke","Sanity","Regression"})
+    public void setUp(String browser){
+        launchApp(browser);
     }
-
-    @AfterMethod
+    @AfterMethod(groups ={"Smoke","Sanity","Regression"})
     public void tearDown(){
         getDriver().quit();
     }
 
-    @Test
+    @Test(groups = "Regression")
     public void switchTabAndProductAvailability(){
         indexPage=new IndexPage();
         homePage=new HomePage();
@@ -43,7 +42,7 @@ public class CartCheckoutPageTest extends BaseClass {
         Assert.assertTrue(result);
     }
 
-    @Test
+    @Test(groups = "Regression")
     public void verifyTotalPrice(){
         indexPage=new IndexPage();
         homePage=new HomePage();

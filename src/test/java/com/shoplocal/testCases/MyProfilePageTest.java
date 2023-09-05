@@ -10,12 +10,12 @@ import org.testng.annotations.Test;
 public class MyProfilePageTest extends BaseClass {
     MyProfilePage myProfilePage;
 
-    @BeforeMethod
-    public void setUp(){
-        launchApp();
+    @BeforeMethod(groups ={"Smoke","Sanity","Regression"})
+    public void setUp(String browser){
+        launchApp(browser);
     }
 
-    @AfterMethod
+    @AfterMethod(groups ={"Smoke","Sanity","Regression"})
     public void tearDown(){
         getDriver().quit();
     }

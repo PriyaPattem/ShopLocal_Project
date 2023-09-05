@@ -16,17 +16,17 @@ public class IndexPageTest extends BaseClass {
     LoginTypePage loginTypePage;
     HomePage homePage;
 
-    @BeforeMethod
-    public void setUp(){
-        launchApp();
+    @BeforeMethod(groups ={"Smoke","Sanity","Regression"})
+    public void setUp(String browser){
+        launchApp(browser);
     }
 
-    @AfterMethod
+    @AfterMethod(groups ={"Smoke","Sanity","Regression"})
     public void tearDown(){
         getDriver().quit();
     }
 
-    @Test
+    @Test(groups = "Smoke")
     public void validateLogoTest(){
         Log.startTestCase("validateLogo Test");
         indexPage = new IndexPage();
@@ -37,14 +37,14 @@ public class IndexPageTest extends BaseClass {
         Log.endTestCase("validateLogoTest is success");
     }
 
-    @Test
+    @Test(groups = "Smoke")
     public void validatePageTitleTest(){
         indexPage = new IndexPage();
         String actualTitle =indexPage.validatePageTitle();
         String expectedTitle="ShopLocally";
         Assert.assertEquals(actualTitle,expectedTitle);
     }
-    @Test
+    @Test(groups = "Smoke")
     public void clickOnLoginTest(){
         loginTypePage=new LoginTypePage();
         indexPage = new IndexPage();
@@ -53,7 +53,7 @@ public class IndexPageTest extends BaseClass {
         String expectedUrl = "https://bu1is.krify.com/shoplocal_dev/home/logins";
         Assert.assertEquals(actualUrl,expectedUrl);
     }
-    @Test
+    @Test(groups = "Smoke")
     public void clickOnexploreTest(){
         indexPage = new IndexPage();
         homePage = new HomePage();
