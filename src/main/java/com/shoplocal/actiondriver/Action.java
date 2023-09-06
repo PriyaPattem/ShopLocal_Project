@@ -687,10 +687,11 @@ public class Action extends BaseClass {
         } catch (Exception e) {
             e.getMessage();
         }
+
         // This new path for jenkins
-        String newImageString = "http://localhost:8082/job/MyStoreProject/ws/MyStoreProject/ScreenShots/" + filename + "_"
-                + dateName + ".png";
-        return newImageString;
+//        String newImageString = "http://localhost:8082/job/ShopLocalProject/ws/ShopLocalProject/ScreenShots/" + filename + "_"
+//                + dateName + ".png";
+        return destination;
     }
 
     public static String getCurrentTime() {

@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
+    <listeners>
+        <listener class-name="com.shoplocal.utility.ListenerClass"></listener>
+    </listeners>
     <test thread-count="5" name="Test_All">
+        <parameter name="browser" value="Chrome"></parameter>
         <classes>
-            <class name="com.shoplocal.testCases.AddToCartPageTest"/>
+      <!--      <class name="com.shoplocal.testCases.AddToCartPageTest"/>
             <class name="com.shoplocal.testCases.CartCheckoutPageTest"/>
-            <class name="com.shoplocal.testCases.CustomerLoginPageTest"/>
+            <class name="com.shoplocal.testCases.CustomerLoginPageTest"/>-->
             <class name="com.shoplocal.testCases.EndToEndTest"/>
-            <class name="com.shoplocal.testCases.HomePageTest"/>
-            <class name="com.shoplocal.testCases.IndexPageTest"/>
-            <class name="com.shoplocal.testCases.LoginTypePageTest"/>
-            <class name="com.shoplocal.testCases.MyProfilePageTest"/>
+           <!-- <class name="com.shoplocal.testCases.HomePageTest"/> -->
+          <!--  <class name="com.shoplocal.testCases.IndexPageTest"/>
+            <class name="com.shoplocal.testCases.LoginTypePageTest"/>-->
+          <!--  <class name="com.shoplocal.testCases.MyProfilePageTest"/> -->
             <class name="com.shoplocal.testCases.SearchResultPageTest"/>
         </classes>
+
     </test>
 </suite>

@@ -23,6 +23,7 @@ public class SearchResultPage extends BaseClass {
     }
 
     public boolean productAvailability(){
+        Action.explicitWait(getDriver(),getProductResult(ProductName),30);
         return Action.isDisplayed(getDriver(),getProductResult(ProductName));
     }
 

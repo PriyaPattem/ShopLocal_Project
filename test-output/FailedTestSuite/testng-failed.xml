@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [FailedTestSuite]">
+  <test thread-count="5" name="FailedTest(failed)">
+    <classes>
+      <class name="com.shoplocal.testCases.SearchResultPageTest">
+        <methods>
+          <include name="clickOnProductTest"/>
+          <include name="tearDown"/>
+          <include name="afterSuite"/>
+          <include name="setUp"/>
+          <include name="loadConfig"/>
+        </methods>
+      </class> <!-- com.shoplocal.testCases.SearchResultPageTest -->
+    </classes>
+  </test> <!-- FailedTest(failed) -->
+</suite> <!-- Failed suite [FailedTestSuite] -->

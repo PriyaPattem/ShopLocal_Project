@@ -33,6 +33,7 @@ public class HomePage extends BaseClass {
     public SearchResultPage searchProduct(String productname){
         Action.EnterText(searchField,productname);
         Action.performClick(getDriver(),searchButton);
+        Action.pageLoadTimeOut(getDriver(),20);
         return new SearchResultPage();
     }
 

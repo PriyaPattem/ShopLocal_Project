@@ -1,6 +1,7 @@
 package com.shoplocal.Base;
 
 import com.shoplocal.actiondriver.Action;
+import com.shoplocal.utility.ExtentManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
@@ -23,22 +25,17 @@ public class BaseClass {
     // public static WebDriver driver;
 
     //Declare ThreadLocal driver
-    public static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<>();
+    public static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     @BeforeSuite(groups ={"Smoke","Sanity","Regression"})
-    public void beforeSuite(){
+    public void loadConfig() throws IOException {
+        ExtentManager.setExtent();
+
         DOMConfigurator.configure("log4j.xml");
-    }
 
-    public static WebDriver getDriver(){
-        return driver.get();
-    }
-
-    @BeforeTest(groups ={"Smoke","Sanity","Regression"})
-    public void loadConfig() {
         try {
             prop = new Properties();
-           // System.out.println("super constructor invoked");
+            // System.out.println("super constructor invoked");
             FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "\\configuration\\Dev_Config.properties");
             prop.load(fis);
         } catch (FileNotFoundException e) {
@@ -46,6 +43,10 @@ public class BaseClass {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static WebDriver getDriver(){
+        return driver.get();
     }
 
     @Parameters("browser")
@@ -68,6 +69,11 @@ public class BaseClass {
         Action.implicitWait(getDriver(),20);
         Action.pageLoadTimeOut(getDriver(),20);
         Action.launchUrl(getDriver(),prop.getProperty("baseUrl"));
+    }
+
+    @AfterSuite
+    public void afterSuite(){
+        ExtentManager.endReport();
     }
 
 }
