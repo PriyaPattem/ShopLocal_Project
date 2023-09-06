@@ -6,6 +6,7 @@ import com.shoplocal.pageObjects.*;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.awt.image.DataBuffer;
@@ -16,7 +17,7 @@ public class CustomerLoginPageTest extends BaseClass {
     CustomerLoginPage customerLoginPage;
     HomePage homePage;
     AccountCreationPage accountCreationPage;
-
+    @Parameters("browser")
     @BeforeMethod(groups ={"Smoke","Sanity","Regression"})
     public void setUp(String browser){
         launchApp(browser);

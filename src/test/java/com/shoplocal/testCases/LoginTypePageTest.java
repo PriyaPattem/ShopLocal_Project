@@ -7,6 +7,7 @@ import com.shoplocal.pageObjects.LoginTypePage;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class LoginTypePageTest extends BaseClass {
@@ -15,6 +16,7 @@ public class LoginTypePageTest extends BaseClass {
     LoginTypePage loginTypePage;
     CustomerLoginPage customerLoginPage;
 
+    @Parameters("browser")
     @BeforeMethod(groups ={"Smoke","Sanity","Regression"})
     public void setUp(String browser){
         launchApp(browser);

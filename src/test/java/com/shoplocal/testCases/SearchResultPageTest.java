@@ -8,6 +8,7 @@ import com.shoplocal.pageObjects.SearchResultPage;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class SearchResultPageTest extends BaseClass {
@@ -15,6 +16,7 @@ public class SearchResultPageTest extends BaseClass {
     HomePage homePage;
     SearchResultPage searchResultPage;
     AddToCartPage addToCartPage;
+    @Parameters("browser")
     @BeforeMethod(groups ={"Smoke","Sanity","Regression"})
     public void setUp(String browser){
         launchApp(browser);
