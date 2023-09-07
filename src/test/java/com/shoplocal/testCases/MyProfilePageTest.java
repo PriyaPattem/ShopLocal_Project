@@ -11,16 +11,7 @@ import org.testng.annotations.Test;
 public class MyProfilePageTest extends BaseClass {
     MyProfilePage myProfilePage;
 
-    @Parameters("browser")
-    @BeforeMethod(groups ={"Smoke","Sanity","Regression"})
-    public void setUp(String browser){
-        launchApp(browser);
-    }
 
-    @AfterMethod(groups ={"Smoke","Sanity","Regression"})
-    public void tearDown(){
-        getDriver().quit();
-    }
     @Test
     public void visibilityOfOrderHistoryTest(){
         myProfilePage = new MyProfilePage();

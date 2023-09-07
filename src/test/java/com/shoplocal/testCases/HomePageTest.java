@@ -15,17 +15,7 @@ public class HomePageTest extends BaseClass {
     IndexPage indexPage;
     HomePage homePage;
     SearchResultPage searchResultPage;
-    @Parameters("browser")
 
-    @BeforeMethod(groups ={"Smoke","Sanity","Regression"})
-    public void setUp(String browser){
-        launchApp(browser);
-    }
-
-    @AfterMethod(groups ={"Smoke","Sanity","Regression"})
-    public void tearDown(){
-        getDriver().quit();
-    }
     @Test(groups = "Smoke")
     public void ClickOnTodaysDealsTest() {
         indexPage = new IndexPage();

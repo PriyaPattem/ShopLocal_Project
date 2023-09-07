@@ -16,15 +16,6 @@ public class SearchResultPageTest extends BaseClass {
     HomePage homePage;
     SearchResultPage searchResultPage;
     AddToCartPage addToCartPage;
-    @Parameters("browser")
-    @BeforeMethod(groups ={"Smoke","Sanity","Regression"})
-    public void setUp(String browser){
-        launchApp(browser);
-    }
-    @AfterMethod(groups ={"Smoke","Sanity","Regression"})
-    public void tearDown(){
-        getDriver().quit();
-    }
 
     @Test(groups = "Smoke")
     public void clickOnProductTest(){

@@ -9,15 +9,6 @@ import com.shoplocal.actiondriver.Action;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import org.testng.TestNG;
-import org.testng.xml.XmlClass;
-import org.testng.xml.XmlInclude;
-import org.testng.xml.XmlSuite;
-import org.testng.xml.XmlTest;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ListenerClass extends ExtentManager implements ITestListener {
     Action action = new Action();

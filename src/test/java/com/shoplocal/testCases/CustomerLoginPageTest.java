@@ -17,16 +17,7 @@ public class CustomerLoginPageTest extends BaseClass {
     CustomerLoginPage customerLoginPage;
     HomePage homePage;
     AccountCreationPage accountCreationPage;
-    @Parameters("browser")
-    @BeforeMethod(groups ={"Smoke","Sanity","Regression"})
-    public void setUp(String browser){
-        launchApp(browser);
-    }
 
-    @AfterMethod(groups ={"Smoke","Sanity","Regression"})
-    public void tearDown(){
-        getDriver().quit();
-    }
 
     @Test(dataProvider = "CustomerLoginData", dataProviderClass = DataProviders.class,groups = {"Smoke","Sanity"})
     public void validateLoginTest(String uname,String pwd){

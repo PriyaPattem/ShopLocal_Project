@@ -9,10 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -75,5 +72,17 @@ public class BaseClass {
     public void afterSuite(){
         ExtentManager.endReport();
     }
+
+    @Parameters("browser")
+    @BeforeMethod(groups ={"Smoke","Sanity","Regression"})
+    public void setUp(String browser){
+        launchApp(browser);
+    }
+
+    @AfterMethod(groups ={"Smoke","Sanity","Regression"})
+    public void tearDown(){
+        getDriver().quit();
+    }
+
 
 }

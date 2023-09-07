@@ -16,16 +16,7 @@ public class LoginTypePageTest extends BaseClass {
     LoginTypePage loginTypePage;
     CustomerLoginPage customerLoginPage;
 
-    @Parameters("browser")
-    @BeforeMethod(groups ={"Smoke","Sanity","Regression"})
-    public void setUp(String browser){
-        launchApp(browser);
-    }
 
-    @AfterMethod(groups ={"Smoke","Sanity","Regression"})
-    public void tearDown(){
-        getDriver().quit();
-    }
 
     @Test(groups = "Smoke")
     public void clickOnCustomerLoginTest() {

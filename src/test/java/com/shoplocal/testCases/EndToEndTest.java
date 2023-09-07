@@ -15,16 +15,6 @@ public class EndToEndTest extends BaseClass {
     SearchResultPage searchResultPage;
     AddToCartPage addToCartPage;
     CartCheckoutPage cartCheckoutPage;
-    @Parameters("browser")
-    @BeforeMethod(groups ={"Smoke","Sanity","Regression"})
-    public void setUp(String browser){
-        launchApp(browser);
-    }
-
-    @AfterMethod(groups ={"Smoke","Sanity","Regression"})
-    public void tearDown(){
-        getDriver().quit();
-    }
 
     //@Test(dataProvider = "CardDetailsData",dataProviderClass = DataProviders.class)
     @Test(dataProvider = "AddressData",dataProviderClass = DataProviders.class, groups = "Regression")
