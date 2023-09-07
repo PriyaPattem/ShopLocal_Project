@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
+    <listeners>
+        <listener class-name="com.shoplocal.utility.ListenerClass"></listener>
+    </listeners>
     <test thread-count="5" name="Sanity">
         <parameter name="browser" value="Chrome"></parameter>
         <groups>
@@ -8,7 +11,6 @@
                 <include name="Sanity"></include>
             </run>
         </groups>
-        <classes>
         <classes>
             <class name="com.shoplocal.testCases.AddToCartPageTest"/>
             <class name="com.shoplocal.testCases.CartCheckoutPageTest"/>

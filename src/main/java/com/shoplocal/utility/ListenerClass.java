@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListenerClass extends ExtentManager implements ITestListener {
-    Action action= new Action();
+    Action action = new Action();
 
     public void onTestStart(ITestResult result) {
         test = extent.createTest(result.getName());
@@ -46,37 +46,6 @@ public class ListenerClass extends ExtentManager implements ITestListener {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-            XmlSuite failedSuite = new XmlSuite();
-            failedSuite.setName("FailedTestSuite");
-
-//            // Create a new TestNG XML test
-//            XmlTest failedTest = new XmlTest(failedSuite);
-//            failedTest.setName("FailedTest");
-
-            // Create a list of classes for the failed test
-            List<XmlClass> failedClasses = new ArrayList<>();
-            XmlClass failedClass = new XmlClass(result.getTestClass().getName());
-
-            List<XmlInclude> includedMethods = new ArrayList<>();
-            includedMethods.add(new XmlInclude(result.getMethod().getMethodName())); // Add the failed method
-            failedClasses.add(failedClass);
-
-            // Set the list of classes for the test
-           // failedTest.setXmlClasses(failedClasses);
-
-            // Create a TestNG XML suite list and add the failed suite to it
-            List<XmlSuite> suites = new ArrayList<>();
-            suites.add(failedSuite);
-
-            // Create a TestNG XML suite file and save it
-            TestNG testNG = new TestNG();
-            testNG.setXmlSuites(suites);
-            testNG.setOutputDirectory("test-output"); // Specify the output directory
-            testNG.run();
-
-            // Optionally, you can log or print a message indicating that the failed XML file was generated.
-            System.out.println("Generated testng-failed.xml for the failed test: " + result.getName());
 
 
         }

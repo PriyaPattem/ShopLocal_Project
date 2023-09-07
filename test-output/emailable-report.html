@@ -8,30 +8,46 @@
 <body>
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
-<tr><th colspan="8">FailedTestSuite</th></tr>
-<tr><td><a href="#t0">FailedTest</a></td><td class="num">0</td><td class="num attn">1</td><td class="num">0</td><td class="num">0</td><td class="num">5</td><td></td><td></td></tr>
+<tr><th colspan="8">All Test Suite</th></tr>
+<tr><td><a href="#t0">Regression</a></td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">267,126</td><td>Regression</td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">FailedTestSuite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">FailedTest &#8212; failed (configuration methods)</th></tr><tr class="failedeven"><td rowspan="1">com.shoplocal.testCases.SearchResultPageTest</td><td><a href="#m0">setUp</a></td><td rowspan="1">1694006077507</td><td rowspan="1">-1694006077507</td></tr><tr><th colspan="4">FailedTest &#8212; skipped (configuration methods)</th></tr><tr class="skippedeven"><td rowspan="2">com.shoplocal.testCases.SearchResultPageTest</td><td><a href="#m1">afterSuite</a></td><td rowspan="1">1694006077553</td><td rowspan="1">0</td></tr><tr class="skippedeven"><td><a href="#m2">tearDown</a></td><td rowspan="1">1694006077509</td><td rowspan="1">0</td></tr><tr><th colspan="4">FailedTest &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="1">com.shoplocal.testCases.SearchResultPageTest</td><td><a href="#m3">clickOnProductTest</a></td><td rowspan="1">1694006077508</td><td rowspan="1">1</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">All Test Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Regression &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.shoplocal.testCases.AddToCartPageTest</td><td><a href="#m0">shipmentSelectionTest</a></td><td rowspan="1">1694015113367</td><td rowspan="1">18749</td></tr><tr><th colspan="4">Regression &#8212; passed</th></tr><tr class="passedeven"><td rowspan="2">com.shoplocal.testCases.AddToCartPageTest</td><td><a href="#m1">addToCartTest</a></td><td rowspan="1">1694015025036</td><td rowspan="1">34382</td></tr><tr class="passedeven"><td><a href="#m2">clickOnCartIconText</a></td><td rowspan="1">1694015067591</td><td rowspan="1">37331</td></tr><tr class="passedodd"><td rowspan="2">com.shoplocal.testCases.CartCheckoutPageTest</td><td><a href="#m3">switchTabAndProductAvailability</a></td><td rowspan="1">1694015140504</td><td rowspan="1">36497</td></tr><tr class="passedodd"><td><a href="#m4">verifyTotalPrice</a></td><td rowspan="1">1694015185317</td><td rowspan="1">36084</td></tr><tr class="passedeven"><td rowspan="1">com.shoplocal.testCases.EndToEndTest</td><td><a href="#m5">endToendTest</a></td><td rowspan="1">1694015230463</td><td rowspan="1">49125</td></tr></tbody>
 </table>
-<h2>FailedTest</h2><h3 id="m0">com.shoplocal.testCases.SearchResultPageTest#setUp</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.testng.TestNGException: 
-Parameter &apos;browser&apos; is required by BeforeMethod on method setUp but has not been marked @Optional or defined
-
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at com.shoplocal.utility.ListenerClass.onTestFailure(ListenerClass.java:76)
+<h2>Regression</h2><h3 id="m0">com.shoplocal.testCases.AddToCartPageTest#shipmentSelectionTest</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=116.0.5845.179)
+Build info: version: &apos;4.12.0&apos;, revision: &apos;249f2a7d1b*&apos;
+System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;19.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [d42215194e95a8fe1c50fe84d8471c04, findElement {using=class name, value=shrc_btn}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.179, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\user\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64091}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64091/devtoo..., se:cdpVersion: 116.0.5845.179, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d42215194e95a8fe1c50fe84d8471c04
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:66)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy23.toString(Unknown Source)
+	at java.base/java.lang.String.valueOf(String.java:4225)
+	at com.shoplocal.actiondriver.Action.performClick(Action.java:49)
+	at com.shoplocal.pageObjects.HomePage.searchProduct(HomePage.java:35)
+	at com.shoplocal.testCases.AddToCartPageTest.shipmentSelectionTest(AddToCartPageTest.java:51)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
 	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
-... Removed 46 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">com.shoplocal.testCases.SearchResultPageTest#afterSuite</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">com.shoplocal.testCases.SearchResultPageTest#tearDown</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m3">com.shoplocal.testCases.SearchResultPageTest#clickOnProductTest</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.testng.TestNGException: 
-Parameter &apos;browser&apos; is required by BeforeMethod on method setUp but has not been marked @Optional or defined
-
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at com.shoplocal.utility.ListenerClass.onTestFailure(ListenerClass.java:76)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
-	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
-... Removed 46 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">com.shoplocal.testCases.AddToCartPageTest#addToCartTest</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">com.shoplocal.testCases.AddToCartPageTest#clickOnCartIconText</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">com.shoplocal.testCases.CartCheckoutPageTest#switchTabAndProductAvailability</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">com.shoplocal.testCases.CartCheckoutPageTest#verifyTotalPrice</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">com.shoplocal.testCases.EndToEndTest#endToendTest</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th><th>Parameter #5</th><th>Parameter #6</th><th>Parameter #7</th><th>Parameter #8</th></tr><tr class="param stripe"><td>swathi</td><td>swathipriya@krify.com</td><td>9.705688455E9</td><td>sarpavaram</td><td>kakinada</td><td>Andhra pradesh</td><td>Canada</td><td>533005.0</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>
