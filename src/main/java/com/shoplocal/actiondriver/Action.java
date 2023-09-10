@@ -689,9 +689,9 @@ public class Action extends BaseClass {
         }
 
         // This new path for jenkins
-//        String newImageString = "http://localhost:8082/job/ShopLocalProject/ws/ShopLocalProject/ScreenShots/" + filename + "_"
-//                + dateName + ".png";
-        return destination;
+        String newImageString = "http://localhost:8080/job/ShopLocal_Project/ws/Screenshots/" + filename + "_"
+                + dateName + ".png";
+        return newImageString;
     }
 
     public static String getCurrentTime() {
