@@ -13,7 +13,6 @@
         </groups>
         <classes>
             <class name="com.shoplocal.testCases.AddToCartPageTest"/>
-            
           <!--  <class name="com.shoplocal.testCases.CartCheckoutPageTest"/>
             <class name="com.shoplocal.testCases.CustomerLoginPageTest"/>
             <class name="com.shoplocal.testCases.EndToEndTest"/>
