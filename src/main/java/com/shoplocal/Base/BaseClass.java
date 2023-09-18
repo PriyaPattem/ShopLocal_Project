@@ -6,6 +6,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -49,11 +50,13 @@ public class BaseClass {
     @Parameters("browser")
     public static void launchApp(String browserName) {
         WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+         options.addArguments("--headless");
         //String browserName = prop.getProperty("browser");
         if (browserName.equalsIgnoreCase("Chrome")) {
           //  driver = new ChromeDriver();
            // set driver to ThreadLocalMap
-            driver.set(new ChromeDriver());
+            driver.set(new ChromeDriver(options));
         } else if (browserName.equalsIgnoreCase("FireFox")) {
           //  driver = new FirefoxDriver();
             driver.set(new FirefoxDriver());

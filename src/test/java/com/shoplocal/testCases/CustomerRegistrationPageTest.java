@@ -9,6 +9,7 @@ import com.shoplocal.pageObjects.RegisterTypePage;
 import com.shoplocal.utility.Log;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.util.HashMap;
 
@@ -19,6 +20,8 @@ public class CustomerRegistrationPageTest extends BaseClass {
     CustomerRegistrationPage customerRegistrationPage;
     MyProfilePage myProfilePage;
 
+    String otp="1234";
+    SoftAssert softAssert= new SoftAssert();
     @Test(dataProvider = "newAccountDetailsData", dataProviderClass = DataProviders.class)
     public void validateRegistrationTest(HashMap<String, String> hashMapValue){
         Log.startTestCase("validate registration page test");
@@ -34,10 +37,11 @@ public class CustomerRegistrationPageTest extends BaseClass {
                 hashMapValue.get("Phone"),
                 hashMapValue.get("Password"),
                 hashMapValue.get("ConfirmPassword"));
-        Assert.assertTrue(testCaseStatus);
-//        String actualURL = myProfilePage.getCurrntURL();
-//        boolean text =actualURL.contains("profile");
-//        Assert.assertTrue(text);
+        softAssert.assertTrue(testCaseStatus);
+        customerRegistrationPage.enterOTP(otp);
+        String actualURL = myProfilePage.getCurrntURL();
+        boolean text =actualURL.contains("profile");
+        Assert.assertTrue(text);
     }
 
 }
