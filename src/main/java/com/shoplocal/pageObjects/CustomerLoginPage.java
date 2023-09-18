@@ -28,9 +28,9 @@ public class CustomerLoginPage extends BaseClass {
         return new IndexPage();
     }
 
-    public AccountCreationPage clickOnSignUp(){
+    public CustomerRegistrationPage clickOnSignUp(){
         Action.performClick(getDriver(),SignUp);
-        return new AccountCreationPage();
+        return new CustomerRegistrationPage();
     }
     public String getCurrntURL(){
         String currentURL = Action.getCurrentURL(getDriver());

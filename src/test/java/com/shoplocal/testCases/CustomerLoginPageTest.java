@@ -16,7 +16,7 @@ public class CustomerLoginPageTest extends BaseClass {
     LoginTypePage loginTypePage;
     CustomerLoginPage customerLoginPage;
     HomePage homePage;
-    AccountCreationPage accountCreationPage;
+    CustomerRegistrationPage customerRegistrationPage;
 
 
     @Test(dataProvider = "CustomerLoginData", dataProviderClass = DataProviders.class,groups = {"Smoke","Sanity"})
@@ -43,8 +43,8 @@ public class CustomerLoginPageTest extends BaseClass {
         homePage=new HomePage();
         loginTypePage = indexPage.clickOnlogin();
         customerLoginPage=loginTypePage.clickOnCustomerLogin();
-        accountCreationPage =customerLoginPage.clickOnSignUp();
-        String actualUrl= accountCreationPage.getCurrntURL();
+        customerRegistrationPage =customerLoginPage.clickOnSignUp();
+        String actualUrl= customerRegistrationPage.getCurrntURL();
         String expectedUrl="https://bu1is.krify.com/shoplocal_dev/home/login_set/registration";
         Assert.assertEquals(actualUrl,expectedUrl);
     }
