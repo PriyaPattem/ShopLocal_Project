@@ -6,8 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AccountCreationPage extends BaseClass {
-
+public class CustomerRegistrationPage extends BaseClass {
     @FindBy(xpath="//label[@for=\"username\" and text()=\"First Name\"]")
     WebElement firstName;
     @FindBy(xpath="//label[@for=\"surname\" and text()=\"Last Name\"]")
@@ -27,11 +26,20 @@ public class AccountCreationPage extends BaseClass {
     @FindBy(xpath="//button[@onclick=\"return validateUserRegister();\"]")
     WebElement registorButton;
 
-    public AccountCreationPage(){
+    @FindBy(xpath = "//span[text()=\"OTP Verification Code\"]")
+    WebElement otpTitle;
+
+    @FindBy(xpath = "//div[@class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex otp_box mb-2\"]")
+    WebElement otpField;
+
+    @FindBy(xpath = "//button[@onclick=\"return otpcheck();\"]")
+    WebElement verifyOtpButton;
+
+    public CustomerRegistrationPage(){
         PageFactory.initElements(getDriver(),this);
     }
 
-    public MyProfilePage validateRegistration(String fname, String lname, String mail, String phNum, String pwd, String confirmPwd){
+    public boolean validateRegistration(String fname, String lname, String mail, String phNum, String pwd, String confirmPwd){
         Action.EnterText(firstName,fname);
         Action.EnterText(lastName,lname);
         Action.EnterText(email,mail);
@@ -41,7 +49,7 @@ public class AccountCreationPage extends BaseClass {
         Action.performClick(getDriver(),ageCheckbox);
         Action.performClick(getDriver(),termsCheckbox);
         Action.performClick(getDriver(),registorButton);
-        return new MyProfilePage();
+        return verifyOtpTitle();
     }
 
     public String getCurrntURL(){
@@ -50,10 +58,18 @@ public class AccountCreationPage extends BaseClass {
         return currentURL;
     }
 
-    public void validateRegistrationFromCheckout(){
-
+    public boolean verifyOtpTitle(){
+        Action.explicitWait(getDriver(), otpTitle, 20);
+        return Action.isDisplayed(getDriver(), otpTitle);
+    }
+    public MyProfilePage enterOTP(String otp){
+        Action.EnterText(otpField,otp);
+        Action.performClick(getDriver(), verifyOtpButton);
+        return new MyProfilePage();
     }
 
 
+    public void validateRegistrationFromCheckout(){
 
+    }
 }

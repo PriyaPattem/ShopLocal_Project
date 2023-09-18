@@ -11,6 +11,9 @@ public class IndexPage extends BaseClass {
     @FindBy(xpath = "//a[normalize-space(text())='Login']")
     WebElement LoginButton;
 
+    @FindBy(xpath="//a[normalize-space(text())=\"Registration\"]")
+    WebElement RegisterButton;
+
     @FindBy(xpath="//div[@class=\"shoplocal_logo\"]")
     WebElement Logo;
 
@@ -29,6 +32,12 @@ public class IndexPage extends BaseClass {
         Action.explicitWait(getDriver(),LoginButton,20);
         Action.performClick(getDriver(),LoginButton);
       return new LoginTypePage();
+    }
+
+    public RegisterTypePage clickOnRegister(){
+        Action.explicitWait(getDriver(),RegisterButton,20);
+        Action.performClick(getDriver(),RegisterButton);
+        return new RegisterTypePage();
     }
 
     public boolean ValidateLogo(){

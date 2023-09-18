@@ -3,6 +3,8 @@ package com.shoplocal.dataProvider;
 import com.shoplocal.utility.NewExcelLibrary;
 import org.testng.annotations.DataProvider;
 
+import java.util.HashMap;
+
 public class DataProviders {
     NewExcelLibrary obj = new NewExcelLibrary();
 
@@ -50,6 +52,24 @@ public class DataProviders {
             }
         }
         return data;
+    }
+
+    @DataProvider(name = "newAccountDetailsData")
+    public Object[][] accountCreation(){
+        HashMap<String,String> hashMap = new HashMap<String,String>();
+
+        int rows = obj.getRowCount("CustomerRegistrationData");
+        int column = obj.getColumnCount("CustomerRegistrationData");
+        int actualRows = rows-1;
+
+        for(int i=0; i<actualRows; i++){
+            for(int j=0; j<column; j++){
+                hashMap.put(obj.getCellData("CustomerRegistrationData", j, 1), obj.getCellData("CustomerRegistrationData", j, i+2));
+            }
+        }
+        return new Object[][]{
+                {hashMap}
+        };
     }
 
 
