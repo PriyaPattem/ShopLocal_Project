@@ -11,7 +11,6 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 public class ListenerClass extends ExtentManager implements ITestListener {
-    Action action = new Action();
 
     public void onTestStart(ITestResult result) {
         test = extent.createTest(result.getName());
@@ -30,7 +29,7 @@ public class ListenerClass extends ExtentManager implements ITestListener {
                         MarkupHelper.createLabel(result.getName() + " - Test Case Failed", ExtentColor.RED));
                 test.log(Status.FAIL,
                         MarkupHelper.createLabel(result.getThrowable() + " - Test Case Failed", ExtentColor.RED));
-                String imgPath = action.screenShot(BaseClass.getDriver(), result.getName());
+                String imgPath = Action.screenShot(BaseClass.getDriver(), result.getName());
 
                 test.fail("ScreenShot is Attached", MediaEntityBuilder.createScreenCaptureFromPath(imgPath).build());
 

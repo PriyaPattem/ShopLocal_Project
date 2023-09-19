@@ -25,12 +25,12 @@ public class BaseClass {
     // public static WebDriver driver;
 
     //Declare ThreadLocal driver
-    private ThreadLocal<WebDriver> threadLocaldriver = new ThreadLocal<>();
+    private static ThreadLocal<WebDriver> threadLocaldriver = new ThreadLocal<>();
 
     public void setDriver(WebDriver driver){
         threadLocaldriver.set(driver);
     }
-    public WebDriver getDriver(){
+    public static WebDriver getDriver(){
         return threadLocaldriver.get();
     }
 
