@@ -675,7 +675,7 @@ public class Action extends BaseClass {
         WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(20));
         wait.until(ExpectedConditions.urlContains(Urltext));
     }
-
+    
     public static String screenShot(WebDriver driver, String filename) {
         String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
         TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
