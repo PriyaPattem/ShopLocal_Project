@@ -5,7 +5,7 @@
         <listener class-name="com.shoplocal.utility.ListenerClass"></listener>
     </listeners>
     <test thread-count="5" name="Test_All">
-        <parameter name="browser" value="Chrome"></parameter>
+        <parameter name="browser" value="CHROME"></parameter>
         <classes>
             <class name="com.shoplocal.testCases.AddToCartPageTest"/>
             <class name="com.shoplocal.testCases.CartCheckoutPageTest"/>

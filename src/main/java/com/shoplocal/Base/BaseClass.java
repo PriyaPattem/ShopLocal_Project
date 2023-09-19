@@ -1,6 +1,8 @@
 package com.shoplocal.Base;
 
+import com.shoplocal.Constants.DriverType;
 import com.shoplocal.actiondriver.Action;
+import com.shoplocal.driverFactory.DriverManagerFactory;
 import com.shoplocal.utility.ExtentManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.log4j.xml.DOMConfigurator;
@@ -23,7 +25,14 @@ public class BaseClass {
     // public static WebDriver driver;
 
     //Declare ThreadLocal driver
-    public static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    private ThreadLocal<WebDriver> threadLocaldriver = new ThreadLocal<>();
+
+    public void setDriver(WebDriver driver){
+        threadLocaldriver.set(driver);
+    }
+    public WebDriver getDriver(){
+        return threadLocaldriver.get();
+    }
 
     @BeforeSuite(groups ={"Smoke","Sanity","Regression"})
     public void loadConfig() throws IOException {
@@ -43,29 +52,11 @@ public class BaseClass {
         }
     }
 
-    public static WebDriver getDriver(){
-        return driver.get();
-    }
 
     @Parameters("browser")
-    public static void launchApp(String browserName) {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-         options.addArguments("--headless");
-        //String browserName = prop.getProperty("browser");
-        if (browserName.equalsIgnoreCase("Chrome")) {
-          //  driver = new ChromeDriver();
-           // set driver to ThreadLocalMap
-            driver.set(new ChromeDriver(options));
-        } else if (browserName.equalsIgnoreCase("FireFox")) {
-          //  driver = new FirefoxDriver();
-            driver.set(new FirefoxDriver());
-        } else if (browserName.equalsIgnoreCase("Edge")) {
-           //  driver = new EdgeDriver();
-            driver.set(new EdgeDriver());
-        }
+    public void launchApp(String browserName) {
+        setDriver(DriverManagerFactory.getDriverType(DriverType.CHROME).createDriver());
         getDriver().get(prop.getProperty("baseUrl"));
-
         Action.implicitWait(getDriver(),20);
         Action.pageLoadTimeOut(getDriver(),20);
         Action.launchUrl(getDriver(),prop.getProperty("baseUrl"));
