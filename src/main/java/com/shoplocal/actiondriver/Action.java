@@ -680,8 +680,8 @@ public class Action extends BaseClass {
         String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
         TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
         File source = takesScreenshot.getScreenshotAs(OutputType.FILE);
-        String destination = System.getProperty("user.dir") + "\\ScreenShots\\" + filename + "_" + dateName + ".png";
-
+        //String destination = System.getProperty("user.dir") + "\\ScreenShots\\" + filename + "_" + dateName + ".png";
+         String destination = "./Screenshots" + filename + "_" + dateName + ".png";
         try {
             FileUtils.copyFile(source, new File(destination));
         } catch (Exception e) {
