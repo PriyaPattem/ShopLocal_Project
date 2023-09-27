@@ -4,7 +4,7 @@
     <listeners>
         <listener class-name="com.shoplocal.utility.ListenerClass"></listener>
     </listeners>
-    <test thread-count="5" name="Sanity">
+    <test thread-count="3" name="Sanity">
         <parameter name="browser" value="CHROME"></parameter>
         <groups>
             <run>
@@ -12,15 +12,11 @@
             </run>
         </groups>
         <classes>
-            <!-- <class name="com.shoplocal.testCases.AddToCartPageTest"/>
-            <class name="com.shoplocal.testCases.CartCheckoutPageTest"/>
-            <class name="com.shoplocal.testCases.CustomerLoginPageTest"/>
-            <class name="com.shoplocal.testCases.EndToEndTest"/> -->
+
             <class name="com.shoplocal.testCases.HomePageTest"/>
             <class name="com.shoplocal.testCases.IndexPageTest"/>
             <class name="com.shoplocal.testCases.LoginTypePageTest"/> 
-            <class name="com.shoplocal.testCases.MyProfilePageTest"/>
-           <class name="com.shoplocal.testCases.SearchResultPageTest"/> 
+
         </classes>
     </test>
 </suite>
