@@ -4,7 +4,7 @@
     <listeners>
         <listener class-name="com.shoplocal.utility.ListenerClass"></listener>
     </listeners>
-    <test thread-count="3" name="Sanity">
+    <test thread-count="1" name="Sanity">
         <parameter name="browser" value="CHROME"></parameter>
         <groups>
             <run>
