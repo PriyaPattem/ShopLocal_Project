@@ -14,8 +14,8 @@
             <class name="com.shoplocal.testCases.HomePageTest"/>
             <class name="com.shoplocal.testCases.IndexPageTest"/>
             <class name="com.shoplocal.testCases.LoginTypePageTest"/>
-           <!-- <class name="com.shoplocal.testCases.MyProfilePageTest"/>
-            <class name="com.shoplocal.testCases.SearchResultPageTest"/>-->
+            <class name="com.shoplocal.testCases.MyProfilePageTest"/>
+           <!-- <class name="com.shoplocal.testCases.SearchResultPageTest"/>-->
         </classes>
 
     </test>
